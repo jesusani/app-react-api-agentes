@@ -1,7 +1,19 @@
 import React, { useEffect, useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Agentes = () => {
 
+    const tableStyle = {
+        borderCollapse: 'collapse',
+        width: '100%',
+        margin: '20px',
+      };
+    
+      const cellStyle = {
+        border: '1px solid #ddd',
+        padding: '8px',
+        textAlign: 'left',
+      };
 
 
     const [agentes, setAgentes] = useState([]);
@@ -27,7 +39,53 @@ const Agentes = () => {
     useEffect(() => getData(), []);
 
     const agentesList = agentes.map((agente, index) => {
-        return <div key={index}>{agente.name}</div>;
+        return (
+            <tr  key={index}  >
+                    <td style={cellStyle}>
+                        <a className="nav-link active" href="#" aria-current="page">
+                            {agente.codigo} 
+                          
+                        </a>
+                    </td>
+                    <td style={cellStyle}>
+                        <a className="nav-link active" href="#" aria-current="page">
+                            {agente.campo} 
+                          
+                        </a>
+                    </td>
+                    <td style={cellStyle}>
+                        <a className="nav-link active" href="#" aria-current="page">
+                            {agente.energia} 
+                            <span className="visually-hidden">(current)</span>
+                        </a>
+                    </td>
+                    <td style={cellStyle}>
+                        <a className="nav-link active" href="#" aria-current="page">
+                            {agente.frecuencia} 
+                            <span className="visually-hidden">(current)</span>
+                        </a>
+                    </td>
+                    <td style={cellStyle}>
+                        <a className="nav-link active" href="#" aria-current="page">
+                            {agente.corriente} 
+                            <span className="visually-hidden">(current)</span>
+                        </a>
+                    </td>
+                    <td style={cellStyle}>
+                        <a className="nav-link active" href="#" aria-current="page">
+                            {agente.agente} 
+                            <span className="visually-hidden">(current)</span>
+                        </a>
+                    </td>
+                    <td style={cellStyle}>
+                        <a className="nav-link active" href="#" aria-current="page">
+                            {agente.tecnica} 
+                            <span className="visually-hidden">(current)</span>
+                        </a>
+                    </td>
+            </tr>
+  
+        );
     });
     if (error) { // ⬅️ mostramos el error (si es que existe)
         return (
@@ -39,7 +97,21 @@ const Agentes = () => {
     return (
         <>
             <h1>Agentes</h1>
-            {agentesList}
+        <table  style={tableStyle}>
+            <thead>
+                
+                <th >código</th> <th >campo</th> <th>energía</th>
+                <th >frecuencia</th> <th >corriente</th> <th >agente</th> <th>tecnica</th>
+                
+            </thead>
+            <tbody>
+                   {agentesList}
+            </tbody>
+          
+        </table>
+           
+
+           
         </>
 
     )

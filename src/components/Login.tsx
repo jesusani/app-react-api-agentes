@@ -37,7 +37,7 @@ export default function Login() {
         if (result.token) {
           setToken(result.token);
           alert('You are logged in.');
-          this.goToMain();
+         this.goToMain();
         } else {
           alert('Please check your login information.');
         }
@@ -95,9 +95,12 @@ export default function Login() {
           onClick={clickLogin}>
           Login
         </button>
-        <label>
+        <p>
+            <label>
           token: {token}
-        </label>
+        </label> 
+        </p>
+     
       
       </form >
 

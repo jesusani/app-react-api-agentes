@@ -53,7 +53,7 @@ const router = createBrowserRouter([
       },
       {
         path: "protected/agentes",
-        loader: protectedLoader,
+       // loader: protectedLoader,
         Component: Agentes,
       },
     ],

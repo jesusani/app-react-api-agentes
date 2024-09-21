@@ -28,12 +28,13 @@ export default function Layout() {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
-                            <Nav.Link as={Link} to="/">Home</Nav.Link>
-                            <NavDropdown title="Mis cosas" id="basic-nav-dropdown">
-                                <NavDropdown.Item as={Link} to="/protected/cervezas">Cervezas</NavDropdown.Item>
+                        <Nav.Link as={Link} to="/">Home</Nav.Link>
+                        <Nav.Link as={Link}  to="/protected/agentes">Agentes</Nav.Link>
+                        <NavDropdown title="Mis cosas" id="basic-nav-dropdown">
+                               {/*  <NavDropdown.Item as={Link} to="/protected/cervezas">Cervezas</NavDropdown.Item>
                                 <NavDropdown.Item as={Link} to="/protected/tasks">Tasks  </NavDropdown.Item>
                                 <NavDropdown.Item as={Link} to="/protected/users">Users</NavDropdown.Item>
-                                <NavDropdown.Divider />
+                                <NavDropdown.Divider /> */}
                                 <NavDropdown.Item as={Link} to="/protected/agentes">Agentes</NavDropdown.Item>
                             </NavDropdown>
                         </Nav>
@@ -62,26 +63,26 @@ export default function Layout() {
                     </div>
                     <div className="col-sm-2 sidenav">
                     <div className="well well-lg">Aquí sabemos de:</div>
-                        <div className="well well-sm">
+                      {/*   <div className="well well-sm">
                             <p>Cervezas</p>
-                        </div>
+                        </div> */}
                         <div className="well well-sm">
                             <p>Agentes ElectroFísicos</p>
                         </div>                        
-                        <div className="well well-sm">
+                    {/*     <div className="well well-sm">
                             <p>Tareas</p>
                         </div>                        
                         <div className="well well-sm">
                             <p>Usuarios</p>
-                        </div>
+                        </div> */}
   
                     </div>
                 </div>
             </div>
 
-            <footer className="container-fluid text-center">
+        {/*     <footer className="container-fluid text-center">
                 <p>App realizada por JESÚS RAMIRO </p>
-            </footer>
+            </footer> */}
 
 
         </>
