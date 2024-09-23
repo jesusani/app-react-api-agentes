@@ -1,5 +1,4 @@
 import React from "react";
-import AuthStatus from "./AuthStatus.tsx";
 import { Link, Outlet } from "react-router-dom";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -22,6 +21,7 @@ export default function Layout() {
             <script src="https://cdn.jsdelivr.net/npm/react-dom/umd/react-dom.production.min.js" crossOrigin="anonymous"></script>
 
             <script src="https://cdn.jsdelivr.net/npm/react-bootstrap@next/dist/react-bootstrap.min.js" crossOrigin="anonymous"></script>
+
             <Navbar expand="lg" className="bg-body-tertiary">
                 <Container>
                     <Navbar.Brand href="#home"> Agentes Electrofísicos y más</Navbar.Brand>
@@ -31,10 +31,7 @@ export default function Layout() {
                         <Nav.Link as={Link} to="/">Home</Nav.Link>
                         <Nav.Link as={Link}  to="/protected/agentes">Agentes</Nav.Link>
                         <NavDropdown title="Mis cosas" id="basic-nav-dropdown">
-                               {/*  <NavDropdown.Item as={Link} to="/protected/cervezas">Cervezas</NavDropdown.Item>
-                                <NavDropdown.Item as={Link} to="/protected/tasks">Tasks  </NavDropdown.Item>
-                                <NavDropdown.Item as={Link} to="/protected/users">Users</NavDropdown.Item>
-                                <NavDropdown.Divider /> */}
+                             
                                 <NavDropdown.Item as={Link} to="/protected/agentes">Agentes</NavDropdown.Item>
                             </NavDropdown>
                         </Nav>
@@ -55,7 +52,7 @@ export default function Layout() {
                         <Nav className="me-auto">
                             <Nav.Link as={Link} to="/">Home</Nav.Link>
                         </Nav>
-                        <AuthStatus />
+                      
                     </div>
 
                     <div className="col-sm-8 text-left">
