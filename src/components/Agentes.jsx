@@ -20,7 +20,7 @@ const Agentes = () => {
     const [error, setError] = useState(null);
 
     const getData = () => {
-        fetch("http://localhost:3001/api/v1/agentes")
+        fetch("https://api-nodejs-agentes.onrender.com/api/v1/agentes")
             .then((response) => {
                 if (response.ok) {
                     response.json().then((data) => {
