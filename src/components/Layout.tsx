@@ -60,7 +60,7 @@ export default function Layout() {
                     <div className="col-sm-8 text-left">
                         <Outlet />
                     </div>
-                    <div className="col-sm-2 sidenav">
+                   {/*  <div className="col-sm-2 sidenav">
                     <div className="well well-lg">Aquí sabemos de:</div>
                         <div className="well well-sm">
                             <p>Cervezas</p>
@@ -75,13 +75,13 @@ export default function Layout() {
                             <p>Usuarios</p>
                         </div>
   
-                    </div>
+                    </div> */}
                 </div>
             </div>
-
+{/* 
             <footer className="container-fluid text-center">
                 <p>App realizada por JESÚS RAMIRO </p>
-            </footer>
+            </footer> */}
 
 
         </>

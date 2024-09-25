@@ -22,7 +22,7 @@ const router = createBrowserRouter([
     path: "/",
     loader() {
       // Our root route always provides the user, if logged in
-      return { user: fakeAuthProvider.username };
+      return { user: fakeAuthProvider.username, token: fakeAuthProvider.token };
     },
     Component: Layout,
     children: [
@@ -74,22 +74,51 @@ export default function App() {
   );
 }
 
-
+/*
+  const clickLogin = (e) => {
+    e.preventDefault();
+    fetch('http://localhost:3001/api/v1/auth/login', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json;charset=UTF-8',
+      },
+      body: JSON.stringify({
+        'username': username,
+        'password': password
+      }),
+    }).then((response) => response.json())
+      .then((result) => {
+        if (result.token) {
+          setToken(result.token);
+        //  alert('You are logged in.');
+          //this.goToMain();
+        } else {
+          alert('Please check your login information.');
+        }
+      });
+  }*/
 
 async function loginAction({ request }: LoaderFunctionArgs) {
   let formData = await request.formData();
-  let username = formData.get("username") as string | null;
-
+  let username = formData.get("username") as string | null;  
+  let password = formData.get("password") as string | null;  
+  
+  
   // Validate our form inputs and return validation errors via useActionData()
   if (!username) {
     return {
       error: "You must provide a username to log in",
     };
   }
+  if (!password) {
+    return {
+      error: "You must provide a password to log in",
+    };
+  }
 
   // Sign in and redirect to the proper destination if successful.
   try {
-    await fakeAuthProvider.signin(username);
+    await fakeAuthProvider.signin(username, password);
   } catch (error) {
     // Unused as of now but this is how you would handle invalid
     // username/password combinations - just like validating the inputs

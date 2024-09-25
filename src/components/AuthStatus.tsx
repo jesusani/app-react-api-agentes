@@ -3,7 +3,7 @@ import { useFetcher, useRouteLoaderData } from "react-router-dom";
 
 export default function AuthStatus() {
     // Get our logged in user, if they exist, from the root route loader data
-    let { user } = useRouteLoaderData("root") as { user: string | null };
+    let { user, token } = useRouteLoaderData("root") as { user: string | null , token: string | null};
     let fetcher = useFetcher();
 
     if (!user) {
