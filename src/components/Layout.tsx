@@ -48,8 +48,8 @@ export default function Layout() {
 
             <div className="container-fluid text-center">
                 <div className="row content">
-                    <div className="col-sm-2 sidenav">
-                        <Navbar.Brand href="#home"> Agentes Electrofísicos y más</Navbar.Brand>
+                    <div className="col-sm-1 sidenav">
+                        <Navbar.Brand href="#home"> Atención</Navbar.Brand>
 
                         <Nav className="me-auto">
                             <Nav.Link as={Link} to="/">Home</Nav.Link>

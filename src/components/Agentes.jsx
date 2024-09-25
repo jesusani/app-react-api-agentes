@@ -7,6 +7,7 @@ const Agentes = () => {
         borderCollapse: 'collapse',
         width: '100%',
         margin: '20px',
+        fontSize: '60%'
       };
     
       const cellStyle = {
@@ -95,55 +96,55 @@ const Agentes = () => {
                     </td>
                     <td style={cellStyle}>
                          
-                            {agente.tecnica} 
+                            {agente.patologia} 
                             <span className="visually-hidden">(current)</span>
                           
                     </td>
                     <td style={cellStyle}>
                          
-                            {agente.tecnica} 
+                            {agente.protocolos} 
                             <span className="visually-hidden">(current)</span>
                           
                     </td>
                     <td style={cellStyle}>
                          
-                            {agente.tecnica} 
+                            {agente.evidencia} 
                             <span className="visually-hidden">(current)</span>
                           
                     </td>
                     <td style={cellStyle}>
                          
-                            {agente.tecnica} 
+                            {agente.tendecias} 
                             <span className="visually-hidden">(current)</span>
                           
                     </td>
                     <td style={cellStyle}>
                          
-                            {agente.tecnica} 
+                            {agente.legal} 
                             <span className="visually-hidden">(current)</span>
                           
                     </td>
                     <td style={cellStyle}>
                          
-                            {agente.tecnica} 
+                            {agente.consetimientos} 
                             <span className="visually-hidden">(current)</span>
                           
                     </td>
                     <td style={cellStyle}>
                          
-                            {agente.tecnica} 
+                            {agente.indicaciones} 
                             <span className="visually-hidden">(current)</span>
                           
                     </td>
                     <td style={cellStyle}>
                          
-                            {agente.tecnica} 
+                            {agente.contraindicacion} 
                             <span className="visually-hidden">(current)</span>
                           
                     </td>
                     <td style={cellStyle}>
                          
-                            {agente.tecnica} 
+                            {agente.equipos} 
                             <span className="visually-hidden">(current)</span>
                           
                     </td>
@@ -166,8 +167,8 @@ const Agentes = () => {
                 <table  style={tableStyle}>
                     <thead>
                        <tr><th>CÓDIGO</th> <th>CAMPO</th> <th>ENERGÍA</th><th>FRECUENCIA</th> <th>CORRIENTE</th> <th>AGENTE</th> <th>TÉCNICA</th>                    
-                    <th>PATOLOGÍA</th> <th>PROTOCOLOS</th> <th>EVIDENCIA</th><th>TENDENCIA</th> <th>LEGAL</th> <th>CONSENTIMIENTOS</th> <th>INDICACIONES</th>
-                    <th>CONTRAINDICACIONES</th><th>EQUIPOS</th> 
+                    <th>PATOLOGÍA</th> <th>PROTOCOLOS</th> <th>EVIDENCIA</th><th>TENDENCIA</th> <th>LEGAL</th> <th>CONSENTIMIENTOS</th> 
+                    <th>INDICACIONES</th><th>CONTRAINDICACIONES</th><th>EQUIPOS</th> 
                         </tr> 
                     </thead>
                     <tbody>
