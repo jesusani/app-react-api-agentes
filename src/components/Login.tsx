@@ -25,9 +25,7 @@ export default function Login() {
 
 
 
-  function changeUsername(e) { };
 
-  function changePassword(e) { };
 
   return (
     <div>
@@ -45,6 +43,7 @@ export default function Login() {
    id='username'
    name="username"
    type='text'
+   value={username}
    placeholder='Phone number, username or email'
  />
  <input
@@ -53,6 +52,7 @@ export default function Login() {
    id='password'
    name="password"
    type='password'
+   value={password}
    placeholder="Password" />
  <button
    className='login-button'

@@ -18,7 +18,7 @@ interface AuthProvider {
     token: null,
 
     async signin(username: string, password: string) {
-      //await new Promise((r) => setTimeout(r, 500)); // fake delay
+      
        fetch('http://localhost:3001/api/v1/auth/login', {
         method: 'POST',
         headers: {
@@ -32,7 +32,7 @@ interface AuthProvider {
         .then((result) => {
           if (result.token) {
             //setToken(result.token);
-             alert('You are logged in.');
+             //alert('You are logged in.');
             fakeAuthProvider.isAuthenticated = true;
             fakeAuthProvider.username = username;
             fakeAuthProvider.password = password;

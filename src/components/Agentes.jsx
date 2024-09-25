@@ -6,7 +6,6 @@ const Agentes = () => {
     const tableStyle = {
         borderCollapse: 'collapse',
         width: '100%',
-        fontSize: '60%',
         margin: '20px',
       };
     
@@ -15,7 +14,6 @@ const Agentes = () => {
         padding: '8px',
         textAlign: 'left',
       };
-
 
 
     const [agentes, setAgentes] = useState([]);
@@ -48,110 +46,112 @@ const Agentes = () => {
 
     useEffect(() => getData(), []);
 
-     const agentesList = agentes.map((agente, index) => {
+    const agentesList = agentes.map((agente, index) => {
+      
+
         return (
             <tr  key={index}  >
                     <td style={cellStyle}>
-                        <a className="nav-link active" href="#" aria-current="page">
+                    <a className="nav-link active" href="./agentes" aria-current="page">
                             {agente.codigo} 
                           
-                        </a>
+                            </a>
                     </td>
                     <td style={cellStyle}>
-                        <a className="nav-link active" href="#" aria-current="page">
+                         
                             {agente.campo} 
                           
-                        </a>
+                          
                     </td>
                     <td style={cellStyle}>
-                        <a className="nav-link active" href="#" aria-current="page">
+                         
                             {agente.energia} 
                             <span className="visually-hidden">(current)</span>
-                        </a>
+                          
                     </td>
                     <td style={cellStyle}>
-                        <a className="nav-link active" href="#" aria-current="page">
+                         
                             {agente.frecuencia} 
                             <span className="visually-hidden">(current)</span>
-                        </a>
+                          
                     </td>
                     <td style={cellStyle}>
-                        <a className="nav-link active" href="#" aria-current="page">
+                         
                             {agente.corriente} 
                             <span className="visually-hidden">(current)</span>
-                        </a>
+                          
                     </td>
                     <td style={cellStyle}>
-                        <a className="nav-link active" href="#" aria-current="page">
+                         
                             {agente.agente} 
                             <span className="visually-hidden">(current)</span>
-                        </a>
+                          
                     </td>
                     <td style={cellStyle}>
-                        <a className="nav-link active" href="#" aria-current="page">
+                         
                             {agente.tecnica} 
                             <span className="visually-hidden">(current)</span>
-                        </a>
+                          
                     </td>
                     <td style={cellStyle}>
-                        <a className="nav-link active" href="#" aria-current="page">
+                         
                             {agente.tecnica} 
                             <span className="visually-hidden">(current)</span>
-                        </a>
+                          
                     </td>
                     <td style={cellStyle}>
-                        <a className="nav-link active" href="#" aria-current="page">
+                         
                             {agente.tecnica} 
                             <span className="visually-hidden">(current)</span>
-                        </a>
+                          
                     </td>
                     <td style={cellStyle}>
-                        <a className="nav-link active" href="#" aria-current="page">
+                         
                             {agente.tecnica} 
                             <span className="visually-hidden">(current)</span>
-                        </a>
+                          
                     </td>
                     <td style={cellStyle}>
-                        <a className="nav-link active" href="#" aria-current="page">
+                         
                             {agente.tecnica} 
                             <span className="visually-hidden">(current)</span>
-                        </a>
+                          
                     </td>
                     <td style={cellStyle}>
-                        <a className="nav-link active" href="#" aria-current="page">
+                         
                             {agente.tecnica} 
                             <span className="visually-hidden">(current)</span>
-                        </a>
+                          
                     </td>
                     <td style={cellStyle}>
-                        <a className="nav-link active" href="#" aria-current="page">
+                         
                             {agente.tecnica} 
                             <span className="visually-hidden">(current)</span>
-                        </a>
+                          
                     </td>
                     <td style={cellStyle}>
-                        <a className="nav-link active" href="#" aria-current="page">
+                         
                             {agente.tecnica} 
                             <span className="visually-hidden">(current)</span>
-                        </a>
+                          
                     </td>
                     <td style={cellStyle}>
-                        <a className="nav-link active" href="#" aria-current="page">
+                         
                             {agente.tecnica} 
                             <span className="visually-hidden">(current)</span>
-                        </a>
+                          
                     </td>
                     <td style={cellStyle}>
-                        <a className="nav-link active" href="#" aria-current="page">
+                         
                             {agente.tecnica} 
                             <span className="visually-hidden">(current)</span>
-                        </a>
+                          
                     </td>
             </tr>
   
-        );
+        )
     });
-
+   
  
     return (
 
