@@ -32,7 +32,8 @@ export default function Layout() {
                         <Nav.Link as={Link}  to="/protected/agentes">Agentes</Nav.Link>
                         <NavDropdown title="Mis cosas" id="basic-nav-dropdown">
                              
-                                <NavDropdown.Item as={Link} to="/protected/agentes">Agentes</NavDropdown.Item>
+                        <NavDropdown.Item as={Link} to="/protected/agentes">Agentes</NavDropdown.Item>
+                        <NavDropdown.Item as={Link} to="/protected/agentes/create">Crear Nuevo Agente</NavDropdown.Item>
                             </NavDropdown>
                         </Nav>
                     </Navbar.Collapse>
@@ -46,8 +47,8 @@ export default function Layout() {
 
             <div className="container-fluid text-center">
                 <div className="row content">
-                    <div className="col-sm-2 sidenav">
-                        <Navbar.Brand href="#home"> Agentes Electrofísicos y más</Navbar.Brand>
+                    <div className="col-sm-1 sidenav">
+                        <Navbar.Brand href="#home"> Agentes</Navbar.Brand>
 
                         <Nav className="me-auto">
                             <Nav.Link as={Link} to="/">Home</Nav.Link>
@@ -58,11 +59,11 @@ export default function Layout() {
                     <div className="col-sm-8 text-left">
                         <Outlet />
                     </div>
-                    <div className="col-sm-2 sidenav">
+                    {/*   <div className="col-sm-2 sidenav">
                     <div className="well well-lg">Aquí sabemos de:</div>
-                      {/*   <div className="well well-sm">
+                      <div className="well well-sm">
                             <p>Cervezas</p>
-                        </div> */}
+                        </div> 
                         <div className="well well-sm">
                             <p>Agentes ElectroFísicos</p>
                         </div>                        
@@ -71,9 +72,9 @@ export default function Layout() {
                         </div>                        
                         <div className="well well-sm">
                             <p>Usuarios</p>
-                        </div> */}
+                        </div>
   
-                    </div>
+                    </div> */}
                 </div>
             </div>
 
