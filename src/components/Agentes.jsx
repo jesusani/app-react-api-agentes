@@ -21,8 +21,12 @@ const Agentes = () => {
 
     const [agentes, setAgentes] = useState([]);
     const [error, setError] = useState(null);
+    const [isLoaded, setIsLoaded] = useState(false);
 
     const getData = () => {
+        setIsLoaded(false);  // Mostrar loader
+        setError(null);    // Limpiar errores previos
+        
         fetch("https://api-nodejs-agentes.onrender.com/api/v1/agentes")
             .then((response) => {
                 if (response.ok) {
@@ -35,7 +39,9 @@ const Agentes = () => {
                 }
             }).catch((error) => { // ⬅️ hubo un problema que no permitió hacer la solicitud
                 setError("No pudimos hacer la solicitud para obtener datos");
-              });
+              }).finally(() => {
+                setIsLoaded(true);       // Ocultar loader al terminar
+            });
 
     };
 
@@ -163,13 +169,7 @@ const handleEliminar = async (id) => {
   
         );
     });
-    if (error) { // ⬅️ mostramos el error (si es que existe)
-        return (
-          <div className="App">
-            <h1>{error}</h1>
-              </div>
-        );
-      }
+  
     return (
         <>
             <h1>Agentes</h1>
