@@ -119,8 +119,8 @@ const FormAgentes = ({ apiUrl }) => {
           <input type="text" name="tecnica" value={formData.tecnica} onChange={handleChange} />
         </div>
         <div>
-          <label>PATOLOGÍA</label>
-          <input type="text" name="patologia" value={formData.patologia} onChange={handleChange} />
+          <label>PATOLOGÍAS</label>
+          <input type="text" name="patologias" value={formData.patologias} onChange={handleChange} />
         </div>
         <div>
           <label>PROTOCOLOS</label>
@@ -139,8 +139,8 @@ const FormAgentes = ({ apiUrl }) => {
           <input type="text" name="legal" value={formData.legal} onChange={handleChange} />
         </div>
         <div>
-          <label>CONSENTIMIENTOS</label>
-          <input type="text" name="consentimientos" value={formData.consentimientos} onChange={handleChange} />
+          <label>CONSENTIMIENTO</label>
+          <input type="text" name="consentimiento" value={formData.consentimiento} onChange={handleChange} />
         </div>
         <div>
           <label>INDICACIONES</label>
