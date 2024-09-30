@@ -59,7 +59,7 @@ const FormAgentes = ({ apiUrl }) => {
       if (isEditing) {
         // Si es edición, hacer PUT
         response = await fetch(`${apiUrl}/${id}`, {
-          method: 'patch',
+          method: 'PATCH',
           headers: {
             'Content-Type': 'application/json',
           },

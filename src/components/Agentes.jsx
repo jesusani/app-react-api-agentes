@@ -114,7 +114,7 @@ const handleEliminar = async (id) => {
                         
                     </td>
                     <td style={cellStyle}>
-                            {agente.patologia} 
+                            {agente.patologias} 
                             <span className="visually-hidden">(current)</span>
                         
                     </td>
@@ -139,7 +139,7 @@ const handleEliminar = async (id) => {
                         
                     </td>
                     <td style={cellStyle}>
-                            {agente.consentimientos} 
+                            {agente.consentimiento} 
                             <span className="visually-hidden">(current)</span>
                         
                     </td>
