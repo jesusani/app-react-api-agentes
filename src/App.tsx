@@ -14,6 +14,7 @@ import Cervezas from "./components/Cervezas.jsx";
 import Tasks from "./components/Tasks.jsx";
 import Home from "./components/Home.jsx";
 
+import FormAgentes from "./components/FormAgentes.jsx";
 
 
 const router = createBrowserRouter([
@@ -55,6 +56,14 @@ const router = createBrowserRouter([
         path: "protected/agentes",
         loader: protectedLoader,
         Component: Agentes,
+      },
+      {
+        path: "protected/agentes/create",  // Ruta para crear un nuevo registro
+        Component: () => <FormAgentes apiUrl="https://api-nodejs-agentes.onrender.com/api/v1/agentes" />,
+      },
+      {
+        path: "protected/agentes/edit/:id",  // Ruta para editar un registro existente
+        Component: () => <FormAgentes apiUrl="https://api-nodejs-agentes.onrender.com/api/v1/agentes" />,
       },
     ],
   },

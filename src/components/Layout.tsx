@@ -35,6 +35,7 @@ export default function Layout() {
                                 <NavDropdown.Item as={Link} to="/protected/users">Users</NavDropdown.Item>
                                 <NavDropdown.Divider />
                                 <NavDropdown.Item as={Link} to="/protected/agentes">Agentes</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/protected/agentes/create">Crear Nuevo Agente</NavDropdown.Item>
                             </NavDropdown>
                         </Nav>
                     </Navbar.Collapse>
