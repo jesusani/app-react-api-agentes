@@ -34,6 +34,8 @@ export default function Layout() {
                              
                         <NavDropdown.Item as={Link} to="/protected/agentes">Agentes</NavDropdown.Item>
                         <NavDropdown.Item as={Link} to="/protected/agentes/create">Crear Nuevo Agente</NavDropdown.Item>
+                        <NavDropdown.Item as={Link}  to="/protected/agentesbusqueda">Agentes filtrados</NavDropdown.Item>
+                       
                             </NavDropdown>
                         </Nav>
                     </Navbar.Collapse>
@@ -48,7 +50,7 @@ export default function Layout() {
             <div className="container-fluid text-center">
                 <div className="row content">
                     <div className="col-sm-1 sidenav">
-                        <Navbar.Brand href="#home"> Agentes</Navbar.Brand>
+                        <Navbar.Brand href="#home"> Atención</Navbar.Brand>
 
                         <Nav className="me-auto">
                             <Nav.Link as={Link} to="/">Home</Nav.Link>

@@ -4,6 +4,7 @@ import {
   redirect,
 } from "react-router-dom";
 import Agentes from "./components/Agentes.jsx";
+import AgentBusqueda from "./components/AgentesBusqueda.jsx";
 import React from "react";
 import Layout from "./components/Layout.tsx";
 import Home from "./components/Home.jsx";
@@ -25,6 +26,11 @@ const router = createBrowserRouter([
         path: "protected/agentes",
        // loader: protectedLoader,
         Component: Agentes,
+      }, 
+      {
+        path: "protected/agentesbusqueda",
+       // loader: protectedLoader,
+        Component: AgentBusqueda,
       },
       {
         path: "protected/agentes/create",  // Ruta para crear un nuevo registro
