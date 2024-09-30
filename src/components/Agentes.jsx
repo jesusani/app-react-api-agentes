@@ -160,8 +160,9 @@ const handleEliminar = async (id) => {
                     </td>
                     <td>
               {/* Enlace para editar el registro */}
-              <a href={`/protected/agentes/edit/${agente.id}`}>Editar</a>
-              &nbsp;|&nbsp;
+              <Link className="nav-link active" to={`/protected/agentes/edit/${agente.id}`} aria-current="page">
+        Editar
+      </Link> 
               {/* Botón para eliminar el registro */}
               <button onClick={() => handleEliminar(agente.id)}>Eliminar</button>
             </td>
@@ -172,7 +173,13 @@ const handleEliminar = async (id) => {
   
     return (
         <>
-            <h1>Agentes</h1>
+          {!isLoaded && <p>Cargando...</p>} {/* Mostrar loader */}
+
+{error && <p>Error: {error}</p>} {/* Mostrar errores si los hay */}
+
+{agentes && (
+
+<div>     <h1>Agentes</h1>
         <table  style={tableStyle}>
             <thead>
             <tr><th>CÓDIGO</th> <th>CAMPO</th> <th>ENERGÍA</th><th>FRECUENCIA</th> <th>CORRIENTE</th> <th>AGENTE</th> <th>TÉCNICA</th>                    
@@ -186,7 +193,8 @@ const handleEliminar = async (id) => {
           
         </table>
            
-
+        </div>
+            )}
            
         </>
 
