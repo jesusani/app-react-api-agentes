@@ -47,16 +47,40 @@ const Agentes = () => {
 
     useEffect(() => getData(), []);
 
+// Función para eliminar un agente
+const handleEliminar = async (id) => {
+        if (window.confirm('¿Estás seguro de que deseas eliminar este registro?')) {
+          try {
+            const response = await fetch(`${"https://api-nodejs-agentes.onrender.com/api/v1/agentes"}/${id}`, {
+              method: 'DELETE',
+            });
+    
+            if (response.ok) {
+              // Actualizamos el estado eliminando el agente localmente
+              setAgentes((prevAgentes) => prevAgentes.filter((agente) => agente.id !== id));
+              alert('Registro eliminado con éxito');
+            } else {
+              alert('Error al eliminar el registro');
+            }
+          } catch (error) {
+            console.error('Error al realizar la solicitud de eliminación:', error);
+            alert('Error al eliminar el registro');
+          }
+        }
+      };
+    
+    
+
+
     const agentesList = agentes.map((agente, index) => {
       
 
         return (
             <tr  key={index}  >
                     <td style={cellStyle}>
-                    <a className="nav-link active" href="./agentes" aria-current="page">
-                            {agente.codigo} 
-                          
-                            </a>
+                    <Link className="nav-link active" to={`/protected/agentes/edit/${agente.id}`} aria-current="page">
+        {agente.codigo}
+      </Link>
                     </td>
                     <td style={cellStyle}>
                          
@@ -148,6 +172,14 @@ const Agentes = () => {
                             <span className="visually-hidden">(current)</span>
                           
                     </td>
+                    <td>
+              {/* Enlace para editar el registro */}
+              <Link className="nav-link active" to={`/protected/agentes/edit/${agente.id}`} aria-current="page">
+        Editar
+      </Link> 
+              {/* Botón para eliminar el registro */}
+              <button onClick={() => handleEliminar(agente.id)}>Eliminar</button>
+            </td>
             </tr>
   
         )
