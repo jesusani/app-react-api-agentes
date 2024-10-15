@@ -9,6 +9,9 @@ import React from "react";
 import Layout from "./components/Layout.tsx";
 import Home from "./components/Home.jsx";
 import FormAgentes from "./components/FormAgentes.jsx";
+import FormTecnicas from "./components/Formtecnicas.jsx";
+import Tecnicas from "./components/Tecnicas.jsx";
+import TecnicaBusqueda from "./components/TecnicasBusqueda.jsx";
 
 
 
@@ -36,10 +39,27 @@ const router = createBrowserRouter([
         path: "protected/agentes/create",  // Ruta para crear un nuevo registro
         Component: () => <FormAgentes apiUrl="https://api-nodejs-agentes.onrender.com/api/v1/agentes" />,
       },
-      {
+      {      path: "protected/tecnicas",
+        // loader: protectedLoader,
+         Component: Tecnicas,
+       }, 
+       {
+         path: "protected/tecnicasbusqueda",
+        // loader: protectedLoader,
+         Component: TecnicaBusqueda,
+       },
+       {
+         path: "protected/tecnicas/create",  // Ruta para crear un nuevo registro
+         Component: () => <FormTecnicas apiUrl="https://api-nodejs-agentes.onrender.com/api/v1/tecnicas" />,
+       },
+       {
         path: "protected/agentes/edit/:id",  // Ruta para editar un registro existente
         Component: () => <FormAgentes apiUrl="https://api-nodejs-agentes.onrender.com/api/v1/agentes" />,
       },
+      {
+       path: "protected/tecnicas/edit/:id",  // Ruta para editar un registro existente
+       Component: () => <FormTecnicas apiUrl="https://api-nodejs-agentes.onrender.com/api/v1/tecnicas" />,
+     },
     ],
   },
   {

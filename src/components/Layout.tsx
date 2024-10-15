@@ -35,6 +35,9 @@ export default function Layout() {
                         <NavDropdown.Item as={Link} to="/protected/agentes">Agentes</NavDropdown.Item>
                         <NavDropdown.Item as={Link} to="/protected/agentes/create">Crear Nuevo Agente</NavDropdown.Item>
                         <NavDropdown.Item as={Link}  to="/protected/agentesbusqueda">Agentes filtrados</NavDropdown.Item>
+                        <NavDropdown.Item as={Link} to="/protected/tecnicas">tecnicas</NavDropdown.Item>
+                        <NavDropdown.Item as={Link} to="/protected/tecnicas/create">Crear Nuevo tecnica</NavDropdown.Item>
+                        <NavDropdown.Item as={Link}  to="/protected/tecnicasbusqueda">tecnicas filtrados</NavDropdown.Item>
                        
                             </NavDropdown>
                         </Nav>
