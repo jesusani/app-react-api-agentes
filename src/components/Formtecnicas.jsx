@@ -2,15 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 const FormTecnicas = ({ apiUrl }) => {
-  const { id } = useParams(); 
+  const { id } = useParams();
   const [formData, setFormData] = useState({
     codigo: '',
     campo: '',
     energia: '',
     frecuencia: '',
     corriente: '',
-    agent: '',
-    tecnic: '',
+    agente: '',
+    tecnica: '',
     patologia: '',
     protocolo: '',
     evidencia: '',
@@ -63,6 +63,7 @@ const FormTecnicas = ({ apiUrl }) => {
       ...prev,
       [name]: value,
     }));
+    console.log(FormData);
   };
 
   const handleSubmit = async (e) => {
@@ -85,6 +86,8 @@ const FormTecnicas = ({ apiUrl }) => {
           },
           body: JSON.stringify(formData),
         });
+
+        console.log(FormData);
       }
 
       if (response.ok) {
@@ -133,8 +136,8 @@ const FormTecnicas = ({ apiUrl }) => {
       });
   }, []);
 
-    // Diccionario para mapear cada campo con su respectiva lista
-   
+  // Diccionario para mapear cada campo con su respectiva lista
+
   const fieldMap = {
     codigo: codigos,
     campo: campos,
@@ -185,44 +188,44 @@ const FormTecnicas = ({ apiUrl }) => {
     <div>
       <h1>{isEditing ? 'Editar Registro' : 'Crear Registro'}</h1>
       <form onSubmit={handleSubmit}>
-      <div key="tecnica">
-            <label>TECNICA</label>
-            <input
-              list="tecnicasList-list"
-              id="tecnica-select"
-              name="tecnic"
-              value={formData.tecnic}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              disabled={loading}
-            />
-            <datalist id="tecnicasList-list">
-              {(tecnicasList || []).map((option, index) => (
-                <option key={index} value={option}>
-                  {option}
-                </option>
-              ))}
-            </datalist>
-          </div> 
-          <div key="agente">
-            <label>AGENTE</label>
-            <input
-              list="agentes-list"
-              id="agentes"
-              name="agent"
-              value={formData.agent}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              disabled={loading}
-            />
-            <datalist id="agentes-list">
-              {(agentesList|| []).map((option, index) => (
-                <option key={index} value={option}>
-                  {option}
-                </option>
-              ))}
-            </datalist>
-          </div>
+        <div key="tecnica">
+          <label>TECNICA</label>
+          <input
+            list="tecnicasList-list"
+            id="tecnica-select"
+            name="tecnic"
+            value={formData.tecnic}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            disabled={loading}
+          />
+          <datalist id="tecnicasList-list">
+            {(tecnicasList || []).map((option, index) => (
+              <option key={index} value={option}>
+                {option}
+              </option>
+            ))}
+          </datalist>
+        </div>
+        <div key="agente">
+          <label>AGENTE</label>
+          <input
+            list="agentes-list"
+            id="agentes"
+            name="agent"
+            value={formData.agent}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            disabled={loading}
+          />
+          <datalist id="agentes-list">
+            {(agentesList || []).map((option, index) => (
+              <option key={index} value={option}>
+                {option}
+              </option>
+            ))}
+          </datalist>
+        </div>
         {Object.keys(formData).map((field) => (
           <div key={field}>
             <label>{field.toUpperCase()}</label>
