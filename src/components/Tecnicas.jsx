@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const Tecnicas = () => {
+const Tecnicas =  ({ apiUrl }) => {
   const tableStyle = {
     borderCollapse: "collapse",
     width: "100%",
@@ -25,7 +25,7 @@ const Tecnicas = () => {
     setIsLoaded(false); // Mostrar loader
     setError(null); // Limpiar errores previos
 
-    fetch("https://api-nodejs-agentes.onrender.com/api/v1/tecnicas")
+    fetch(`${apiUrl}`)
       .then((response) => {
         if (response.ok) {
           response.json().then((data) => {
@@ -52,7 +52,7 @@ const Tecnicas = () => {
     if (window.confirm("¿Estás seguro de que deseas eliminar este registro?")) {
       try {
         const response = await fetch(
-          `${"https://api-nodejs-agentes.onrender.com/api/v1/tecnicas"}/${id}`,
+          `${"http://localhost:3001/api/v1/tecnicas"}/${id}`,
           {
             method: "DELETE",
           }
@@ -108,11 +108,11 @@ const Tecnicas = () => {
           <span className="visually-hidden">(current)</span>
         </td>
         <td style={cellStyle}>
-          {Tecnica.patologias}
+          {Tecnica.patologia}
           <span className="visually-hidden">(current)</span>
         </td>
         <td style={cellStyle}>
-          {Tecnica.protocolos}
+          {Tecnica.protocolo}
           <span className="visually-hidden">(current)</span>
         </td>
         <td style={cellStyle}>
@@ -132,15 +132,15 @@ const Tecnicas = () => {
           <span className="visually-hidden">(current)</span>
         </td>
         <td style={cellStyle}>
-          {Tecnica.indicaciones}
+          {Tecnica.indicacion}
           <span className="visually-hidden">(current)</span>
         </td>
         <td style={cellStyle}>
-          {Tecnica.contraindicaciones}
+          {Tecnica.contraindicacion}
           <span className="visually-hidden">(current)</span>
         </td>
         <td style={cellStyle}>
-          {Tecnica.equipos}
+          {Tecnica.equipo}
           <span className="visually-hidden">(current)</span>
         </td>
         <td>

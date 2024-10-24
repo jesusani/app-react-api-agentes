@@ -41,7 +41,7 @@ const router = createBrowserRouter([
       },
       {      path: "protected/tecnicas",
         // loader: protectedLoader,
-         Component: Tecnicas,
+         Component: () => <Tecnicas apiUrl="https://api-nodejs-agentes.onrender.com/api/v1/tecnicas" />,
        }, 
        {
          path: "protected/tecnicasbusqueda",

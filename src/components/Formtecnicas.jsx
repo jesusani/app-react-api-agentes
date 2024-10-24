@@ -1,34 +1,49 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom'; // Para obtener el id si es edición
+import { useParams } from 'react-router-dom';
 
 const FormTecnicas = ({ apiUrl }) => {
-  const { id } = useParams(); // Obtiene el ID de la URL (si existe)
+  const { id } = useParams(); 
   const [formData, setFormData] = useState({
     codigo: '',
     campo: '',
     energia: '',
     frecuencia: '',
     corriente: '',
-    agente: '',
-    tecnica: '',
-    patologias: '',
-    protocolos: '',
+    agent: '',
+    tecnic: '',
+    patologia: '',
+    protocolo: '',
     evidencia: '',
     tendencia: '',
     legal: '',
     consentimiento: '',
-    indicaciones: '',
-    contraindicaciones: '',
-    equipos: '',
+    indicacion: '',
+    contraindicacion: '',
+    equipo: '',
   });
 
   const [isEditing, setIsEditing] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [contraindicaciones, setContraindicaciones] = useState([]);
+  const [equipos, setEquipos] = useState([]);
+  const [indicaciones, setIndicaciones] = useState([]);
+  const [legales, setLegales] = useState([]);
+  const [evidencias, setEvidencias] = useState([]);
+  const [tendencias, setTendencias] = useState([]);
+  const [corrientes, setCorrientes] = useState([]);
+  const [frecuencias, setFrecuencias] = useState([]);
+  const [tecnicasList, setTecnicasList] = useState([]);
+  const [agentesList, setAgentesList] = useState([]);
+  const [codigos, setCodigos] = useState([]);
+  const [campos, setCampos] = useState([]);
+  const [energias, setEnergias] = useState([]);
+  const [patologias, setPatologias] = useState([]);
+  const [protocolos, setProtocolos] = useState([]);
+  const [consentimientos, setConsentimientos] = useState([]);
 
-  // Cargar los datos si estamos en modo de edición
   useEffect(() => {
     if (id) {
       setIsEditing(true);
-      // Llamada a la API para obtener los datos del registro que se va a editar
       const fetchData = async () => {
         try {
           const response = await fetch(`${apiUrl}/${id}`);
@@ -42,22 +57,19 @@ const FormTecnicas = ({ apiUrl }) => {
     }
   }, [id, apiUrl]);
 
-  // Manejar cambios en los campos del formulario
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
+    setFormData((prev) => ({
+      ...prev,
       [name]: value,
-    });
+    }));
   };
 
-  // Manejar el envío del formulario para crear o actualizar
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       let response;
       if (isEditing) {
-        // Si es edición, hacer PUT
         response = await fetch(`${apiUrl}/${id}`, {
           method: 'PATCH',
           headers: {
@@ -66,7 +78,6 @@ const FormTecnicas = ({ apiUrl }) => {
           body: JSON.stringify(formData),
         });
       } else {
-        // Si es creación, hacer POST
         response = await fetch(apiUrl, {
           method: 'POST',
           headers: {
@@ -84,76 +95,156 @@ const FormTecnicas = ({ apiUrl }) => {
     } catch (error) {
       console.error('Error:', error);
     }
+    console.log('Datos que se enviarán:', formData);
+
+  };
+
+  useEffect(() => {
+    fetch("http://localhost:3001/api/v1/listados/")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Error al cargar los datos');
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setAgentesList(data.agenteslist);
+        setTecnicasList(data.tecnicaslist);
+        setPatologias(data.patologias);
+        setCampos(data.campos);
+        setCodigos(data.codigos);
+        setContraindicaciones(data.contraindicaciones);
+        setCorrientes(data.corrientes);
+        setEnergias(data.energias);
+        setFrecuencias(data.frecuencias);
+        setEquipos(data.equipos);
+        setEvidencias(data.evidencias);
+        setIndicaciones(data.indicaciones);
+        setLegales(data.legales);
+        setConsentimientos(data.consentimientos);
+        setProtocolos(data.protocolos);
+        setTendencias(data.tendencias);
+
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error('Hubo un problema con la solicitud Fetch:', error);
+        setLoading(false);
+      });
+  }, []);
+
+    // Diccionario para mapear cada campo con su respectiva lista
+   
+  const fieldMap = {
+    codigo: codigos,
+    campo: campos,
+    energia: energias,
+    frecuencia: frecuencias,
+    corriente: corrientes,
+    consentimiento: consentimientos,
+    patologia: patologias,
+    protocolo: protocolos,
+    evidencia: evidencias,
+    tendencia: tendencias,
+    legal: legales,
+    indicacion: indicaciones,
+    contraindicacion: contraindicaciones,
+    equipo: equipos,
+  };
+
+
+  const handleBlur = (e) => {
+    const { name, value } = e.target;
+
+
+    if (value && !fieldMap[name].includes(value)) {
+      const setFunctionMap = {
+        codigo: setCodigos,
+        campo: setCampos,
+        energia: setEnergias,
+        frecuencia: setFrecuencias,
+        corriente: setCorrientes,
+        agent: setAgentesList,
+        tecnic: setTecnicasList,
+        patologia: setPatologias,
+        protocolo: setProtocolos,
+        evidencia: setEvidencias,
+        tendencia: setTendencias,
+        consentimiento: setConsentimientos,
+        legal: setLegales,
+        indicacion: setIndicaciones,
+        contraindicacion: setContraindicaciones,
+        equipo: setEquipos,
+      };
+
+      setFunctionMap[name]((prev) => [...prev, value]);
+    }
   };
 
   return (
     <div>
       <h1>{isEditing ? 'Editar Registro' : 'Crear Registro'}</h1>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label>CÓDIGO</label>
-          <input type="text" name="codigo" value={formData.codigo} onChange={handleChange} />
-        </div>
-        <div>
-          <label>CAMPO</label>
-          <input type="text" name="campo" value={formData.campo} onChange={handleChange} />
-        </div>
-        <div>
-          <label>ENERGÍA</label>
-          <input type="text" name="energia" value={formData.energia} onChange={handleChange} />
-        </div>
-        <div>
-          <label>FRECUENCIA</label>
-          <input type="text" name="frecuencia" value={formData.frecuencia} onChange={handleChange} />
-        </div>
-        <div>
-          <label>CORRIENTE</label>
-          <input type="text" name="corriente" value={formData.corriente} onChange={handleChange} />
-        </div>
-        <div>
-          <label>AGENTE</label>
-          <input type="text" name="agente" value={formData.agente} onChange={handleChange} />
-        </div>
-        <div>
-          <label>TÉCNICA</label>
-          <input type="text" name="tecnica" value={formData.tecnica} onChange={handleChange} />
-        </div>
-        <div>
-          <label>PATOLOGÍAS</label>
-          <input type="text" name="patologias" value={formData.patologias} onChange={handleChange} />
-        </div>
-        <div>
-          <label>PROTOCOLOS</label>
-          <input type="text" name="protocolos" value={formData.protocolos} onChange={handleChange} />
-        </div>
-        <div>
-          <label>EVIDENCIA</label>
-          <input type="text" name="evidencia" value={formData.evidencia} onChange={handleChange} />
-        </div>
-        <div>
-          <label>TENDENCIA</label>
-          <input type="text" name="tendencia" value={formData.tendencia} onChange={handleChange} />
-        </div>
-        <div>
-          <label>LEGAL</label>
-          <input type="text" name="legal" value={formData.legal} onChange={handleChange} />
-        </div>
-        <div>
-          <label>CONSENTIMIENTO</label>
-          <input type="text" name="consentimiento" value={formData.consentimiento} onChange={handleChange} />
-        </div>
-        <div>
-          <label>INDICACIONES</label>
-          <input type="text" name="indicaciones" value={formData.indicaciones} onChange={handleChange} />
-        </div>
-        <div>
-          <label>CONTRAINDICACIONES</label>
-          <input type="text" name="contraindicaciones" value={formData.contraindicaciones} onChange={handleChange} />
-        </div>
-        <div>
-          <label>EQUIPOS</label>
-          <input type="text" name="equipos" value={formData.equipos} onChange={handleChange} />
-        </div>
+      <div key="tecnica">
+            <label>TECNICA</label>
+            <input
+              list="tecnicasList-list"
+              id="tecnica-select"
+              name="tecnic"
+              value={formData.tecnic}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              disabled={loading}
+            />
+            <datalist id="tecnicasList-list">
+              {(tecnicasList || []).map((option, index) => (
+                <option key={index} value={option}>
+                  {option}
+                </option>
+              ))}
+            </datalist>
+          </div> 
+          <div key="agente">
+            <label>AGENTE</label>
+            <input
+              list="agentes-list"
+              id="agentes"
+              name="agent"
+              value={formData.agent}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              disabled={loading}
+            />
+            <datalist id="agentes-list">
+              {(agentesList|| []).map((option, index) => (
+                <option key={index} value={option}>
+                  {option}
+                </option>
+              ))}
+            </datalist>
+          </div>
+        {Object.keys(formData).map((field) => (
+          <div key={field}>
+            <label>{field.toUpperCase()}</label>
+            <input
+              list={`${field}-list`}
+              id={`${field}-select`}
+              name={field}
+              value={formData[field]}
+              onChange={handleChange}
+              onBlur={handleBlur}
+              disabled={loading}
+            />
+            <datalist id={`${field}-list`}>
+              {(fieldMap[field] || []).map((option, index) => (
+                <option key={index} value={option}>
+                  {option}
+                </option>
+              ))}
+            </datalist>
+          </div>
+        ))}
+
         <button type="submit">{isEditing ? 'Actualizar' : 'Crear'}</button>
       </form>
     </div>
