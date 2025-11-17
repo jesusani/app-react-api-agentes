@@ -68,11 +68,9 @@ export default function Layout() {
                     {  <div className="col-sm-2 sidenav">
                     <div className="well well-lg">Aquí sabemos de:</div>
                       <div className="well well-sm">
-                            <p>Cervezas</p>
+                            <p>Agentes Electrofísicos</p>
                         </div> 
-                        <div className="well well-sm">
-                            <p>Agentes ElectroFísicos</p>
-                        </div>                        
+                                              
                          <div className="well well-sm">
                             <p>Tareas</p>
                         </div>                        

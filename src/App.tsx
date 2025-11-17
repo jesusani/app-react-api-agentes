@@ -3,15 +3,16 @@ import {
   createBrowserRouter,
   redirect,
 } from "react-router-dom";
-import Agentes from "./components/Agentes.jsx";
-import AgentBusqueda from "./components/AgentesBusqueda.jsx";
-import React from "react";
-import Layout from "./components/Layout.tsx";
-import Home from "./components/Home.jsx";
-import FormAgentes from "./components/FormAgentes.jsx";
-import FormTecnicas from "./components/Formtecnicas.jsx";
-import Tecnicas from "./components/Tecnicas.jsx";
-import TecnicaBusqueda from "./components/TecnicasBusqueda.jsx";
+import agentes from "./components/agentes.jsx";
+import agentbusqueda from "./components/agentesbusqueda.jsx";
+import react from "react";
+import layout from "./components/layout.tsx";
+import home from "./components/home.jsx";
+import formagentes from "./components/formagentes.jsx";
+import formtecnicas from "./components/formtecnicas.jsx";
+import tecnicas from "./components/tecnicas.jsx";
+import tecnicabusqueda from "./components/tecnicasbusqueda.jsx";
+import { protectedloader } from "./components/ProtectedLoader.tsx";
 
 
 
@@ -19,60 +20,66 @@ const router = createBrowserRouter([
   {
     id: "root",
     path: "/",
-    Component: Layout,
+    component: layout,
     children: [
       {
         index: true,
-        Component: Home,
+        component: home,
       },
       {
         path: "protected/agentes",
-       // loader: protectedLoader,
-        Component: Agentes,
+        loader: protectedloader,
+        component: agentes,
       }, 
       {
         path: "protected/agentesbusqueda",
-       // loader: protectedLoader,
-        Component: AgentBusqueda,
+        loader: protectedloader,
+        component: agentbusqueda,
       },
       {
-        path: "protected/agentes/create",  // Ruta para crear un nuevo registro
-        Component: () => <FormAgentes apiUrl="https://api-nodejs-agentes.onrender.com/api/v1/agentes" />,
+        path: "protected/agentes/create", 
+        loader: protectedloader, // ruta para crear un nuevo registro
+        component: () => <formagentes apiurl="https://api-nodejs-agentes.onrender.com/api/v1/agentes" />,
       },
-      {      path: "protected/tecnicas",
-        // loader: protectedLoader,
-         Component: () => <Tecnicas apiUrl="https://api-nodejs-agentes.onrender.com/api/v1/tecnicas" />,
+
+      {      
+        path: "protected/tecnicas",
+        loader: protectedloader,
+        component: () => <tecnicas apiurl="https://api-nodejs-agentes.onrender.com/api/v1/tecnicas" />,
        }, 
        {
          path: "protected/tecnicasbusqueda",
-        // loader: protectedLoader,
-         Component: TecnicaBusqueda,
+         loader: protectedloader,
+         component: tecnicabusqueda,
        },
        {
-         path: "protected/tecnicas/create",  // Ruta para crear un nuevo registro
-         Component: () => <FormTecnicas apiUrl="https://api-nodejs-agentes.onrender.com/api/v1/tecnicas" />,
+         path: "protected/tecnicas/create",  // ruta para crear un nuevo registro
+          loader: protectedloader,
+         component: () => <formtecnicas apiurl="https://api-nodejs-agentes.onrender.com/api/v1/tecnicas" />,
        },
        {
-        path: "protected/agentes/edit/:id",  // Ruta para editar un registro existente
-        Component: () => <FormAgentes apiUrl="https://api-nodejs-agentes.onrender.com/api/v1/agentes" />,
+        path: "protected/agentes/edit/:id",  // ruta para editar un registro existente
+        loader: protectedloader,
+        component: () => <formagentes apiurl="https://api-nodejs-agentes.onrender.com/api/v1/agentes" />,
       },
       {
-       path: "protected/tecnicas/edit/:id",  // Ruta para editar un registro existente
-       Component: () => <FormTecnicas apiUrl="https://api-nodejs-agentes.onrender.com/api/v1/tecnicas" />,
+       path: "protected/tecnicas/edit/:id",  // ruta para editar un registro existente
+        loader: protectedloader,
+       component: () => <formtecnicas apiurl="https://api-nodejs-agentes.onrender.com/api/v1/tecnicas" />,
      },
     ],
   },
   {
     path: "/logout",
     async action() {
-      // We signout in a "resource route" that we can hit from a fetcher.Form
+      // we signout in a "resource route" that we can hit from a fetcher.form
       return redirect("/");
     },
   },
 ]);
 
-export default function App() {
+export default function app() {
   return (
-    <RouterProvider router={router} fallbackElement={<p>Initial Load...</p>} />
+    <routerprovider router={router} fallbackelement={<p>initial load...</p>} />
   );
 }
