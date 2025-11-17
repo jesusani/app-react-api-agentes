@@ -65,7 +65,7 @@ export default function Layout() {
                     <div className="col-sm-8 text-left">
                         <Outlet />
                     </div>
-                    {/*   <div className="col-sm-2 sidenav">
+                    {  <div className="col-sm-2 sidenav">
                     <div className="well well-lg">Aquí sabemos de:</div>
                       <div className="well well-sm">
                             <p>Cervezas</p>
@@ -73,14 +73,14 @@ export default function Layout() {
                         <div className="well well-sm">
                             <p>Agentes ElectroFísicos</p>
                         </div>                        
-                    {/*     <div className="well well-sm">
+                         <div className="well well-sm">
                             <p>Tareas</p>
                         </div>                        
                         <div className="well well-sm">
                             <p>Usuarios</p>
                         </div>
   
-                    </div> */}
+                    </div> }
                 </div>
             </div>
 

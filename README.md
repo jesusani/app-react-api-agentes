@@ -12,4 +12,5 @@ https://api-nodejs-agentes.onrender.com/api/v1/agentes
 https://api-nodejs-agentes.onrender.com/api/v1/tecnicas
 https://api-nodejs-agentes.onrender.com/api/v1/listados
 
+https://app-react-api-agentes.onrender.com/
 
